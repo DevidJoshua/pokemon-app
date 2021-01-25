@@ -14,7 +14,7 @@ import {Color} from  '../theme'
 // only screen and (min-width: 1280px)
 
 const ImgLogoComp=styled.img`
-    display:block;
+    display:inline;
     margin-left:auto;
     margin-right:auto;
     @media only screen and (min-width: 360px){
@@ -24,10 +24,10 @@ const ImgLogoComp=styled.img`
         width:100px;
     }
     @media  only screen and (min-width: 992px){
-        width:60px;
+        width:150px;
     }
     @media only screen and (min-width: 1280px){
-        width:60px;
+        width:200px;
     }
 `
 export const ImgLogo = (props)=>{

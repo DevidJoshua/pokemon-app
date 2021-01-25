@@ -14,8 +14,13 @@ import {Color} from  '../theme'
 // only screen and (min-width: 1280px)
 
 const HeaderHomeComp=styled.nav`
-    width:100%;
-    background:${Color.backgroundContainerColor2};
+    font-family: 'Yusei Magic', sans-serif;
+    width:800px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    margin:0px auto;
+    background:${Color.colorOne};
     box-sizing:border-box;
     padding:30px 0px;
     position:fixed;
@@ -29,6 +34,7 @@ export const HeaderHome = (props)=>{
         </HeaderHomeComp>
     )
 }
+
 
 
 

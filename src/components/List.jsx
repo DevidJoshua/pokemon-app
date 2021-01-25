@@ -15,7 +15,7 @@ import {Color} from  '../theme'
 
 const GridViewComp=styled.div`
     display:block;
-    margin-top:90px;
+    margin-top:100px;
     @media only screen and (min-width: 360px){
 
     }

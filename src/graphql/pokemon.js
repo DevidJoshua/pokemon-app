@@ -6,22 +6,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
   });
 
-const pokemonData = async(pokemon) =>{
-    let dataPokemon=pokemon
-    let dataShaped=[]
-    // append type data
-    new Promise.all(
-        dataPokemon.map(async r=>{
-        await fetch(r.url)
-        .then(res=>res.json())
-        .then(async details=>{
-            let row = {...r}
-            row.types=details.types
-            dataShaped.push(row)
-        })
-    }))
-
-}
 
 export const fetchListPokemon = async() =>{
    try{
@@ -29,7 +13,7 @@ export const fetchListPokemon = async() =>{
                         client.query({
                             query: gql`
                                 query{
-                                    pokemons(limit:20){
+                                    pokemons(limit:100){
                                         next
                                         previous
                                         count
@@ -49,7 +33,17 @@ export const fetchListPokemon = async() =>{
 
 
    }catch(err){
-       console.log('Error>>>>',err);
+       console.log('Erro fetch Pokemons>>>>',err);
    }
-
 }
+export const navigateData = async(url) =>{
+    try{
+        return new Promise(async(resolve,reject)=>{
+            const data=await fetch(url).then(res=>res.json()).catch(err=>reject(err))
+            resolve(data)
+        })
+    }catch(err){
+        console.log('Erro fetch Pokemons>>>>',err);
+    }
+ }
+

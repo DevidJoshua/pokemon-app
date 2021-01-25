@@ -4,9 +4,7 @@ import {Color} from  '../theme'
 const RootContainerComp=styled.div`
   padding:0px;
   margin:0px;
-  display:block;
   width:100%;
-  heigth: 100vh;
 `
 export const RootContainer = (props)=>{
     return(
@@ -19,10 +17,8 @@ export const RootContainer = (props)=>{
 
 const ContainereComp=styled.div`
     width:800px;
-    heigth: 100vh;
     margin:0px auto;
     background: linear-gradient(0deg, ${Color.colorTwo} 35%, ${Color.backgroundContainerColor2} 100%);
-    box-sizing:border-box;
     @media only screen and (min-width: 360px){
 
     }
@@ -39,9 +35,11 @@ const ContainereComp=styled.div`
 
 export const Container = (props) =>{
     return(
-        <ContainereComp>
-            {(props.children)}
-        </ContainereComp>
+        // <center>
+            <ContainereComp>
+                {(props.children)}
+            </ContainereComp>
+        // </center>
     )
 }
 

@@ -1,3 +1,4 @@
+import { from } from '@apollo/client'
 import styled from  '@emotion/styled'
 import {Color} from  '../theme'
 
@@ -14,32 +15,8 @@ import {Color} from  '../theme'
 // only screen and (min-width: 1280px)
 
 function generateCardBackgroundColor(type){
-    const colors = {
-        fire: '#FDDFDF',
-        grass: '#DEFDE0',
-        electric: '#FCF7DE',
-        water: '#DEF3FD',
-        ground: '#f4e7da',
-        rock: '#d5d5d4',
-        fairy: '#fceaff',
-        poison: '#98d7a5',
-        bug: '#f8d5a3',
-        dragon: '#97b3e6',
-        psychic: '#eaeda1',
-        flying: '#F5F5F5',
-        fighting: '#E6E0D4',
-        normal: '#F5F5F5',
-        ice:'#3fd0d4',
-        psychic:'#49804b',
-        steel:'#9fa19f',
-        ghost:'#695282',
-        dark: '#200142',
-        shadow:'#30385c',
-        unknown:'#a3a3a3',
-    };
-
-
-    return type ? colors[type] : '#ffff'
+    const colors=Color.typesColor
+    return type ? colors[type[0].type.name] : '#ffff'
 }
 const CardViewComp=styled.div`
     box-sizing:border-box;
@@ -93,12 +70,13 @@ const CardNameComp=styled.p`
 
 export const CardPokemon = (props)=>{
    return(
-       <CardViewComp type={props.type}>
+       <CardViewComp onClick={props.onClick} type={props.type}>
            <div style={{margin:'auto',marginTop:20,width:'70%',background:'rgba(255, 255, 255, 0.6)',borderRadius:'1000vh'}}>
                 <CardImageComp src={props.pokeImg}/>
            </div>
            <CardNameComp>{props.pokeName}</CardNameComp>
-           <p style={{fontWeight:'bold'}}>Type: {props.type}</p>
+           <p style={{fontWeight:'bold'}}>Type: {props.type[0].type.name}</p>
+           <p style={{}}>Owned: 0</p>
        </CardViewComp>
    )
 }
