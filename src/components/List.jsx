@@ -13,25 +13,28 @@ import {Color} from  '../theme'
 // # Huge
 // only screen and (min-width: 1280px)
 
-const ImgLogoComp=styled.img`
+const GridViewComp=styled.div`
     display:block;
-    margin-left:auto;
-    margin-right:auto;
+    margin-top:90px;
     @media only screen and (min-width: 360px){
-        width:200px;
+
     }
     @media only screen and (min-width: 768px){
-        width:100px;
+
     }
     @media  only screen and (min-width: 992px){
-        width:60px;
+
     }
     @media only screen and (min-width: 1280px){
-        width:60px;
+
     }
 `
-export const ImgLogo = (props)=>{
-    return(<ImgLogoComp src={props.src}/>)
+export const GridView = (props)=>{
+   return(
+       <GridViewComp>
+           {(props.children)}
+       </GridViewComp>
+   )
 }
 
 

@@ -5,9 +5,8 @@ const RootContainerComp=styled.div`
   padding:0px;
   margin:0px;
   display:block;
-  background: linear-gradient(0deg, ${Color.backgroundContainerColor1} 35%, ${Color.backgroundContainerColor2} 100%);
   width:100%;
-  height:100%;
+  heigth: 100vh;
 `
 export const RootContainer = (props)=>{
     return(
@@ -18,12 +17,31 @@ export const RootContainer = (props)=>{
     )
 }
 
+const ContainereComp=styled.div`
+    width:800px;
+    heigth: 100vh;
+    margin:0px auto;
+    background: linear-gradient(0deg, ${Color.colorTwo} 35%, ${Color.backgroundContainerColor2} 100%);
+    box-sizing:border-box;
+    @media only screen and (min-width: 360px){
+
+    }
+    @media only screen and (min-width: 768px){
+
+    }
+    @media  only screen and (min-width: 992px){
+
+    }
+    @media only screen and (min-width: 1280px){
+
+    }
+`
 
 export const Container = (props) =>{
     return(
-        <div className="container">
+        <ContainereComp>
             {(props.children)}
-        </div>
+        </ContainereComp>
     )
 }
 

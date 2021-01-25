@@ -1,5 +1,6 @@
+import logo from  '../images/logoPoke.png'
 const Images ={
-   LogoPoke:require('../images/logoPoke.png')
+   LogoPoke:logo
 }
 
 export default Images
