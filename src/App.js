@@ -1,16 +1,22 @@
 import {useState,createContext} from 'react'
 import ListPokemon from './pages/ListPokemon'
+import CaughtPokemon from './pages/MyCaughtPokemon'
 import { RootContainer } from "./components/Containers"
-import Poke from  './context/pokemonContext'
-
+import PokeContext from  './context/PokemonContext'
+const pages = [
+  {component:<ListPokemon/>,path:'/'},
+  {component:<CaughtPokemon/>,path:'/my-caughtpokemon'}
+]
 function App() {
-  const {PokeContext,PokeState} = Poke
+  const page=pages.filter((o)=>o.path === window.location.pathname)
+  console.log('page>>>',page);
+  const selectedComponent=page[0].component
    return (
-    <PokeContext.Provider value={PokeState}>
+    <PokeContext>
       <RootContainer>
-        <ListPokemon/>
+          {selectedComponent}
       </RootContainer>
-    </PokeContext.Provider>
+    </PokeContext>
   );
 }
 

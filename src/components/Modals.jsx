@@ -4,6 +4,11 @@ import colors from '../theme/colors'
 import {SimpleButton} from './Buttons'
 
 
+
+function generateCardBackgroundColor(type){
+    const colors=Color.typesColor
+    return type ? colors[type[0].type.name] : '#ffff'
+}
 const ModalComp=styled.div`
     font-family: 'Yusei Magic', sans-serif;
     display: ${props=>props.show ? 'inline-block' : 'none'};
@@ -18,10 +23,6 @@ const ModalComp=styled.div`
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
     `
-function generateCardBackgroundColor(type){
-    const colors=Color.typesColor
-    return type ? colors[type[0].type.name] : '#ffff'
-}
 const ModalContentComp=styled.div`
     background-color: ${props=>generateCardBackgroundColor(props.type)};
     border-radius:5vh;
@@ -120,6 +121,46 @@ export const ModalDetailPoke = (props)=>{
         </ModalComp>
     )
 }
+
+const ModalMyPokeComp=styled.div`
+    font-family: 'Yusei Magic', sans-serif;
+    display: ${props=>props.show ? 'inline-block' : 'none'};
+    position: fixed; /* Stay in place */
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    `
+const ModalMyPokeContentComp=styled.div`
+    background-color: ${props=>generateCardBackgroundColor(props.type)};
+    border-radius:5vh;
+    box-sizing:border-box;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height:fit-content;
+
+    @media only screen and (min-width: 360px){
+
+    }
+    @media only screen and (min-width: 768px){
+
+    }
+    @media  only screen and (min-width: 992px){
+
+    }
+    @media only screen and (min-width: 1280px){
+        margin: 5% auto;
+    }
+`
+
+
 
 
 

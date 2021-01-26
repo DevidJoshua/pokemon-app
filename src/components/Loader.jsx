@@ -1,6 +1,5 @@
 import styled from  '@emotion/styled'
-import {Color} from  '../theme'
-import Pokeball from '../images/pokeball.svg';
+import {Color,Images} from  '../theme'
 const LoaderOverlay=styled.div`
     font-family: 'Yusei Magic', sans-serif;
     display: 'inline-block';
@@ -28,14 +27,25 @@ const PokeBallComp=styled.img`
     width: 100px;
     height: 100px;
     margin: 50% auto;
-
     animation: bounce 1000ms infinite;
+    @media only screen and (min-width: 360px){
+
+    }
+    @media only screen and (min-width: 768px){
+
+    }
+    @media  only screen and (min-width: 992px){
+
+    }
+    @media only screen and (min-width: 1280px){
+
+    }
 `
 
 export const PokeBallLoader = (props)=>{
     return(
         <LoaderOverlay>
-            <PokeBallComp src={Pokeball}/>
+            <PokeBallComp src={Images.PokeBall}/>
         </LoaderOverlay>
 
     )
