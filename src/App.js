@@ -8,6 +8,11 @@ const pages = [
   {component:<CaughtPokemon/>,path:'/my-caughtpokemon'}
 ]
 function App() {
+  const [state, setstate] = useState(false)
+  //listen to localstoreage
+  window.addEventListener("storage",(e) => {
+    setstate(true)
+  });
   const page=pages.filter((o)=>o.path === window.location.pathname)
   console.log('page>>>',page);
   const selectedComponent=page[0].component

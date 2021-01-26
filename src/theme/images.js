@@ -1,8 +1,12 @@
-import logo from  '../images/logoPoke.png'
-import pokeball from  '../images/pokeball.svg'
+import LogoPoke from  '../images/logoPoke.png'
+import PokeBall from  '../images/pokeball.svg'
+import Home from  '../images/home.png'
+import PokeDefault from  '../images/pokedefault.png'
 const Images ={
-   LogoPoke:logo,
-   PokeBall:pokeball
+   PokeDefault,
+   LogoPoke,
+   PokeBall,
+   Home
 }
 
 export default Images

@@ -111,9 +111,9 @@ export const ModalDetailPoke = (props)=>{
 
                     </div>
                 </DetailsWrapper>
-                <div>
+                <div style={{marginTop:50}}>
                     <SimpleButton bg={Color.colorThree} cl={Color.colorOne} onClick={()=>props.closeFn()}>Close</SimpleButton>
-                    {/* <CatchButtonComp onClick={}>Catch</CatchButtonComp> */}
+                    <CatchButtonComp onClick={()=>props.catchFn()}>Catch</CatchButtonComp>
                 </div>
 
         </ModalContentComp>

@@ -14,12 +14,18 @@ import {SimpleButton,ButtonMypoke} from '../components/Buttons'
 //service
 import {fetchListPokemon,navigateData} from '../graphql/pokemon'
 //context
-
+import {PokemonContext} from '../context/PokemonContext'
 
 
 function MyCaughtPokemon(){
-  const [data,setData] = React.useState([])
-
+    const [data,setData] = React.useState([])
+    const [isRequest,setIsRequest] = React.useState(false)
+    function onClickItem(data){
+    }
+  const context=useContext(PokemonContext)
+    useEffect(() => {
+        setData(context.listOwnedPokemons)
+    }, [])
 
     return(
         <Container>
@@ -29,7 +35,7 @@ function MyCaughtPokemon(){
 
             <br/>
             <br/>
-            {/* {(isRequest && <PokeBallLoader />)}
+            {(isRequest && <PokeBallLoader />)}
             {(!isRequest &&
                 <GridView>
                     {data.map(res=>(
@@ -43,7 +49,7 @@ function MyCaughtPokemon(){
                         />
                     ))}
                 </GridView>
-            )} */}
+            )}
         </Container>
     )
 }

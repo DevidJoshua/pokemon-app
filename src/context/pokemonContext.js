@@ -1,66 +1,61 @@
-import React,{createContext,useState,useEffect} from 'react'
+import {createContext,useState} from 'react'
 
 
 // data sturct
 // [
-//     {idCaught,idPoke,name,nickname}
+//     {idCaught,pokeData:{id},name,nickname}
 // ]
-    const nameItem='caughtPokemon'
+        export const PokemonContext = createContext()
 
-    function chehckBrowserSupport(fn){
-        if (typeof(Storage) == "undefined") {
-            return console.log('Sorry Your browser dons\'t support localstorage');
+function PokeContext(props){
+
+        const nameItem='caughtPokemon'
+        let list = window.localStorage.getItem(nameItem)
+        const listPokemons=JSON.parse(list)||[]
+        const [listOwnedPokemons,setListOwnedPokemons] =useState([])
+        function chehckBrowserSupport(fn){
+            if (typeof(Storage) == "undefined") {
+                return console.log('Sorry Your browser dons\'t support localstorage');
+            }
         }
-    }
+        chehckBrowserSupport()
 
-    const catchPokemon = async(pokeData,fn) =>{
-        const listPokemons=window.localStorage.getItem(nameItem)||[]
-        let id=0
-        //generate id auto incrementt
-        if(listPokemons.length > 0){
-            const maxValue=await Math.max.apply(Math, listPokemons.map((row)=>row.idCaught))
-                id=maxValue+1
+        const catchPokemon = async(pokeData) =>{;
+            let id=0
+            let dataMyPoke={idCaught:0,idPoke:pokeData.id,pokeData,nickname:'alo'}
+            //generate id auto incrementt
+            if(listPokemons.length > 0){
+                const maxValue=await Math.max.apply(Math, listPokemons.map((row)=>row.idCaught))
+                    id=maxValue+1
+            }
+            dataMyPoke.idCaught=id
+            listPokemons.push(dataMyPoke)
+            window.localStorage.setItem(nameItem,JSON.stringify(listPokemons))
+
+            setListOwnedPokemons(listPokemons)
         }
-        pokeData.idCaught=id
-        listPokemons.push(pokeData)
-        fn()
-    }
 
-    const getCaughtPokemon = () =>{
-        const listPokemons=window.localStorage.getItem(nameItem)||[]
-        return listPokemons
-    }
+        const renameCaughtPokemon = async(idCaughtPoke,nickname) =>{
 
-    const renameCaughtPokemon = async(idCaughtPoke,nickname) =>{
-        const listPokemons=window.localStorage.getItem(nameItem)||[]
-        const specifiedPoke=await listPokemons.filter(row=>row.idCaught !== idCaughtPoke)
-            window.localStorage.setItem(nameItem,[])
-    }
-
-    const releaseCaughtPokemon = async(idCaughtPoke,fn) =>{
-        const listPokemons=window.localStorage.getItem(nameItem)||[]
-        const newPokeList= await listPokemons.filter(row=>row.idCaught !== idCaughtPoke)
-        window.localStorage.setItem(nameItem,newPokeList)
-        fn()
-    }
-
-    const countCaughtPokemonById = async(idPoke) =>{
-        const listPokemons=window.localStorage.getItem(nameItem)||[]
-        if(listPokemons.length>0){
-            const specifiedPokeList=listPokemons.filter(row=>row.pokeId === idPoke)
-            return specifiedPokeList.length
+            const specifiedPoke=await listPokemons.filter(row=>row.idCaught !== idCaughtPoke)
+                window.localStorage.setItem(nameItem,[])
         }
-        return 0
-    }
-    export const PokeState = {releaseCaughtPokemon,countCaughtPokemonById,catchPokemon,getCaughtPokemon,renameCaughtPokemon}
 
-    export const PokemonContext = createContext()
+        const releaseCaughtPokemon = async(idCaughtPoke,fn) =>{
+            const newPokeList= await listPokemons.filter(row=>row.idCaught !== idCaughtPoke)
+            window.localStorage.setItem(nameItem,newPokeList)
+            fn()
+        }
 
-    function PokeContext(props){
-        useEffect(()=>{
+        const countCaughtPokemonById = async(idPoke) =>{
+            if(listPokemons.length>0){
+                const specifiedPokeList=listPokemons.filter(row=>row.pokeId === idPoke)
+                return specifiedPokeList.length
+            }
+            return 0
+        }
+        const PokeState = {listOwnedPokemons,releaseCaughtPokemon,countCaughtPokemonById,catchPokemon,renameCaughtPokemon}
 
-        },window.localStorage.getItem(nameItem))
-        useState([])
-        return(<PokemonContext.Provider value={PokeState}>{props.children}</PokemonContext.Provider>)
-    }
-    export default PokeContext
+            return(<PokemonContext.Provider value={PokeState}>{props.children}</PokemonContext.Provider>)
+        }
+export default PokeContext
