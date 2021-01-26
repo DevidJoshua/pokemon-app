@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+This page has been hosted to netlify:
+
+[https://devid-poke-app.netlify.app/]
 
 ### `yarn start`
 
