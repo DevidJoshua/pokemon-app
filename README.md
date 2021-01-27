@@ -1,4 +1,4 @@
-#This project has been hosted to netlify:
+#This project has been deployed to netlify:
 
 [https://devid-poke-app.netlify.app/]
 
